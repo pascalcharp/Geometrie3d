@@ -1,5 +1,7 @@
 package geometrie3d;
 
+import static geometrie3d.Precision.DoubleEquals;
+
 public class Vecteur3d {
     private double xi ;
     private double yj ;
@@ -34,7 +36,7 @@ public class Vecteur3d {
         if (r == this) return true ;
         if (!(r instanceof Vecteur3d)) return false ;
         Vecteur3d v = (Vecteur3d) r ;
-        return xi == v.xi && yj == v.yj && zk ==  v.zk ;
+        return DoubleEquals(v.xi, xi) &&  DoubleEquals(v.yj, yj) && DoubleEquals(v.zk, zk) ;
     }
 
     public Boolean estNul() {

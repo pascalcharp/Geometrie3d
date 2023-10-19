@@ -1,5 +1,7 @@
 package geometrie3d;
 
+import static geometrie3d.Precision.DoubleEquals;
+
 public class Point3d {
     private double x ;
     private double y ;
@@ -30,6 +32,6 @@ public class Point3d {
         if (p == this) return true ;
         if (!(p instanceof Point3d)) return false ;
         Point3d u = (Point3d) p ;
-        return x == u.x && y == u.y && z == u.z ;
+        return DoubleEquals(x, u.x) && DoubleEquals(y, u.y) && DoubleEquals(z, u.z) ;
     }
 }

@@ -1,5 +1,7 @@
 package geometrie3d;
 
+import static geometrie3d.Precision.DoubleEquals;
+
 public class Plan3d {
     private Point3d point ;
     private Vecteur3d unitaire ;
@@ -34,7 +36,7 @@ public class Plan3d {
     }
 
     private Boolean invariant() {
-        return unitaire.normeCarree() == 1 && !unitaire.estNul();
+        return DoubleEquals(unitaire.normeCarree(), 1.0)  && !unitaire.estNul() ;
     }
 
 }
