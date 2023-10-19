@@ -20,8 +20,21 @@ public class Plan3d {
 
     }
 
+    public Boolean contient(Point3d p) {
+        Vecteur3d v = new Vecteur3d(point, p) ;
+        return v.produitScalaire(unitaire) == 0 ;
+    }
+
+    public Point3d projectionOrthographique(Point3d p) {
+        Vecteur3d ra = new Vecteur3d(point) ;
+        Vecteur3d rp = new Vecteur3d(p) ;
+        double lambda = unitaire.produitScalaire(ra.sub(rp)) ;
+        Vecteur3d res = rp.add(unitaire.multiplier(lambda)) ;
+        return new Point3d(res) ;
+    }
+
     private Boolean invariant() {
-        return unitaire.normeCarree() == 1 ;
+        return unitaire.normeCarree() == 1 && !unitaire.estNul();
     }
 
 }

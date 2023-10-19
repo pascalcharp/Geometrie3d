@@ -11,7 +11,12 @@ public class Droite3d {
         assert invariant() ;
     }
 
+    public Boolean appartient(Point3d p) {
+        Vecteur3d v = new Vecteur3d(point, p) ;
+        return v.projeterSur(unitaire) == v ;
+    }
+
     private Boolean invariant() {
-        return unitaire.normeCarree() == 1 ;
+        return unitaire.normeCarree() == 1 && !unitaire.estNul();
     }
 }

@@ -17,11 +17,25 @@ public class Vecteur3d {
         zk = dest.getZ() - source.getZ() ;
     }
 
+    public Vecteur3d(Point3d dest) {
+        xi = dest.getX();
+        yj = dest.getY();
+        zk = dest.getZ();
+    }
+
     public double getXi() {return xi ; }
 
     public double getYj() {return yj ; }
 
     public double getZk() {return zk ; }
+
+    @Override
+    public boolean equals(Object r) {
+        if (r == this) return true ;
+        if (!(r instanceof Vecteur3d)) return false ;
+        Vecteur3d v = (Vecteur3d) r ;
+        return xi == v.xi && yj == v.yj && zk ==  v.zk ;
+    }
 
     public Boolean estNul() {
         return xi == 0 && yj == 0 && zk == 0 ;
@@ -50,6 +64,14 @@ public class Vecteur3d {
      public Vecteur3d normaliser() {
         double invn = 1.0 / norme() ;
         return multiplier(invn) ;
+     }
+
+     public Vecteur3d add(Vecteur3d rhs) {
+        return new Vecteur3d(xi + rhs.xi, yj + rhs.yj, zk + rhs.zk) ;
+     }
+
+     public Vecteur3d sub(Vecteur3d rhs) {
+        return new Vecteur3d(xi - rhs.xi, yj - rhs.yj, zk - rhs.zk) ;
      }
 
      public Vecteur3d projeterSur(Vecteur3d v) {
